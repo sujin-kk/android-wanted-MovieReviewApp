@@ -47,6 +47,8 @@ fun ImageView.loadPosterImage(imageUrl: String?) {
         Glide.with(this)
             .load(imageUrl)
             .centerCrop()
+            .placeholder(R.drawable.ic_insert_photo_24)
+            .fallback(R.drawable.ic_no_image)
             .into(this)
     }
 }

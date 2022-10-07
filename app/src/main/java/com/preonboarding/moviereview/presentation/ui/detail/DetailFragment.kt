@@ -79,14 +79,14 @@ class DetailFragment: BaseFragment<FragmentDetailBinding>(R.layout.fragment_deta
         val ref = database.database.getReferenceFromUrl(FIRE_BASE_URL)
         // child 안에 무비 id 가져와야한다.
 
-        ref.child("1").addValueEventListener(
+        ref.child(args.homeData.movieCd).addValueEventListener(
             object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if(dataSnapshot.value==null){//리뷰가 없을때
 
                     }
                     else{                        //리뷰가 있을때
-                        val review = detailViewModel.searchReviewMovieList(1)//리뷰 가져오기
+                        val review = detailViewModel.searchReviewMovieList(args.homeData.movieCd.toInt())//리뷰 가져오기
                         //TODO: 가져오는 객체가 map이므로 iterator로 뽑아서 -> List에 넣고 -> RecyclerView
 //                        HashMap<String, String>().forEach {
 //                        }
